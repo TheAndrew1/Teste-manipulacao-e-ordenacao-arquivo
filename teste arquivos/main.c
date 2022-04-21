@@ -6,7 +6,7 @@
 
 void Organizar(FILE *arquivo, char nome_ref[], int *pontos_ref, int j)
 {
-	int pontos, i;
+    int pontos, i;
     char nome[4];
     int pos_i = ftell(arquivo);
     
@@ -48,7 +48,7 @@ int main()
         fgets(nome, 4, stdin); //Pega nome
         fflush(stdin);
         printf("Digite a pontuacao: ");
-        scanf("%d", &pontos); //Pega pontuação
+        scanf("%d", &pontos); //Pega pontuaÃ§Ã£o
         getchar();
         
         if(i != 0)
@@ -65,14 +65,14 @@ int main()
     {
         fread(nome, sizeof(nome), 1, arquivo);
         fread(&pontos, sizeof(int), 1, arquivo);
-        printf("Nome: %s\t Pontuação: %d\n", nome, pontos);
+        printf("Nome: %s\t PontuaÃ§Ã£o: %d\n", nome, pontos);
     }
     fclose(arquivo);
     
     printf("Insira o nome: ");
     fgets(nome, 4, stdin); 
     fflush(stdin);
-    printf("Insira pontuação: ");
+    printf("Insira pontuaÃ§Ã£o: ");
     scanf("%d", &pontos);
     getchar();
     printf("\n\n");
