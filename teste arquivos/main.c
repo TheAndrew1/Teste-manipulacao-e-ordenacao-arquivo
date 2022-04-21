@@ -13,7 +13,7 @@ void Organizar(FILE *arquivo, char nome_ref[], int *pontos_ref, int j)
     fseek(arquivo, 0, 0);
     for (i=0; i<j; i++)
     {
-		fread(nome, sizeof(nome), 1, arquivo);
+	fread(nome, sizeof(nome), 1, arquivo);
         fread(&pontos, sizeof(int), 1, arquivo);
         if(*pontos_ref >= pontos)
         {
