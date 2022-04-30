@@ -8,24 +8,24 @@ void Organizar(FILE *arquivo, char nome_ref[], int *pontos_ref, int j)
 {
     int pontos, i;
     char nome[4];
-    int pos_i = ftell(arquivo);
+    int pos_i = ftell(arquivo);		//Salva a posição do arquivo quando a função é chamada
     
-    fseek(arquivo, 0, 0);
+    fseek(arquivo, 0, 0);	//Volta para o inicio do arquivo
     for (i=0; i<j; i++)
     {
-	fread(nome, sizeof(nome), 1, arquivo);
+		fread(nome, sizeof(nome), 1, arquivo);		//Pega nome e pontos
         fread(&pontos, sizeof(int), 1, arquivo);
-        if(*pontos_ref >= pontos)
+        if(*pontos_ref >= pontos)	//Se a nova pontuação for maior
         {
-        	fseek(arquivo, -(sizeof(int) + sizeof(nome)), 1);
-        	fwrite(nome_ref, sizeof(nome), 1, arquivo);
+        	fseek(arquivo, -(sizeof(int) + sizeof(nome)), 1);	//Volta para o ultimo jogador lido
+        	fwrite(nome_ref, sizeof(nome), 1, arquivo);		//Sobreescreve o novo jogador por cima do anterior
         	fwrite(pontos_ref, sizeof(int), 1, arquivo);
-        	*pontos_ref = pontos;
+        	*pontos_ref = pontos;	//Troca o jogador a ser comparado pelo q saiu do rank
         	strcpy(nome_ref, nome);
 		}
     }
     
-    fseek(arquivo, pos_i - ftell(arquivo), 1);
+    fseek(arquivo, pos_i - ftell(arquivo), 1);		//Antes de sair da função retorna a posição do arquivo para onde estava quando a ela foi chamada
 }
 
 
@@ -69,7 +69,7 @@ int main()
     }
     fclose(arquivo);
     
-    printf("Insira o nome: ");
+    printf("Insira o nome: ");		//Cadastrar um novo no arquivo
     fgets(nome, 4, stdin); 
     fflush(stdin);
     printf("Insira pontuaÃ§Ã£o: ");
